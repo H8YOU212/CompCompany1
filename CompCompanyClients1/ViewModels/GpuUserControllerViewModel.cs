@@ -1,7 +1,13 @@
-﻿using System;
+﻿using CompCompanyClients1.Models;
+using ReactiveUI;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Json;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace CompCompanyClients1.ViewModels
@@ -28,7 +34,7 @@ namespace CompCompanyClients1.ViewModels
             get => _message;
             set => this.RaiseAndSetIfChanged(ref _message, value);
         }
-        public CpuUserControllerViewModel()
+        public GpuUserControllerViewModel()
         {
             client.BaseAddress = new Uri("http://localhost:7232");
             Update();
@@ -47,7 +53,7 @@ namespace CompCompanyClients1.ViewModels
                 Message = "Пустой ответ от сервера";
                 return;
             }
-            Cpus = JsonSerializer.Deserialize<ObservableCollection<Gpu>>(content);
+            Gpus = JsonSerializer.Deserialize<ObservableCollection<Gpu>>(content);
             Message = "";
         }
         public async Task Delete()
@@ -59,7 +65,7 @@ namespace CompCompanyClients1.ViewModels
                 Message = "Ошибка удаления со стороны сервера";
                 return;
             }
-            Cpus.Remove(SelectedGpu);
+            Gpus.Remove(SelectedGpu);
             SelectedGpu = null;
             Message = "";
         }
