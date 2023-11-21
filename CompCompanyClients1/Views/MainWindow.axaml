@@ -18,6 +18,9 @@
 		<TabItem Header="Cpu">
 			<UserControl Content="{Binding _CpuUserController}"/>
 		</TabItem>
+		<TabItem Header="Gpu">
+			<UserControl Content="{Binding _GpuUserController}"/>
+		</TabItem>
 	</TabControl>
 
 </Window>
