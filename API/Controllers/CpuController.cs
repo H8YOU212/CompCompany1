@@ -8,15 +8,13 @@ namespace CompCompany1.Controllers
     public class CpuController : ControllerBase
     {
         [HttpGet]
-        [Route("All")]
         public IActionResult GetAll()
         {
             CompContext compContext = new CompContext();
             return Ok(compContext.Cpus);
         }
 
-        [HttpPut]
-        [Route("Add")]
+        [HttpPost]
         public IActionResult Add(Cpu cpu)
         {
             CompContext compContext = new CompContext();
@@ -25,7 +23,7 @@ namespace CompCompany1.Controllers
             return Ok(cpu);
         }
         [HttpGet]
-        [Route("GetById")]
+        [Route("{id}")]
         public IActionResult GetId(int Id)
         {
             CompContext compContext = new CompContext();
@@ -34,7 +32,6 @@ namespace CompCompany1.Controllers
             return Ok();
         }
         [HttpPost]
-        [Route("Update")]
         public IActionResult Update(Cpu cpu)
         {
             CompContext compContext = new CompContext();
@@ -42,7 +39,7 @@ namespace CompCompany1.Controllers
             return Ok(cpu);
         }
         [HttpDelete]
-        [Route("Delete")]
+        [Route("{id}")]
         public IActionResult Delete(int Id)
         {
             CompContext compContext = new CompContext();
@@ -53,5 +50,13 @@ namespace CompCompany1.Controllers
             return Ok();
         }
 
+        [HttpPut]
+        public IActionResult Edit(Cpu cpu)
+        {
+            var db = new CompContext();
+            db.Cpus.Update(cpu);
+            db.SaveChanges();
+            return Ok(cpu);
+        }
     }
 }

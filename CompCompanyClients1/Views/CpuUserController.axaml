@@ -1,8 +1,25 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:CompCompanyClients1.ViewModels"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="CompCompanyClients1.Views.CpuUserController">
-  Welcome to Avalonia!
+             x:Class="CompCompanyClients1.Views.CpuUserController"
+			 x:DataType="vm:CpuUserControllerViewModel"
+			 >
+	<DockPanel>
+		<StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+			<Button Command="{Binding Update}" Content="Обновить"/>
+			<Button Command="{Binding Add}" Content="Добавить"/>
+			<Button Command="{Binding Delete}" Content="Удалить"/>
+			<Button Command="{Binding Edit}" Content="Редактировать"/>
+		</StackPanel>
+		<StackPanel DockPanel.Dock="Bottom">
+			<TextBlock Text="{Binding Message}"/>
+		</StackPanel>
+		<DataGrid ItemsSource="{Binding Cpus}" AutoGenerateColumns="True" SelectedItem="{Binding SelectedCpu}">
+			
+		</DataGrid>
+	</DockPanel> 
+	
 </UserControl>
