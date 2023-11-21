@@ -30,7 +30,7 @@ namespace CompCompanyClients1.ViewModels
         }
         public CpuUserControllerViewModel()
         {
-            client.BaseAddress = new Uri("http://localhost:5068");
+            client.BaseAddress = new Uri("http://localhost:7232");
             Update();
         }
         public async Task Update()
