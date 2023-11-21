@@ -49,5 +49,12 @@ namespace CompCompany1.Controllers
                 return NotFound();
             return Ok(gpu);
         }
+
+        public IActionResult Update(Gpu gpu)
+        {
+            CompContext compContext = new CompContext();
+            compContext.Gpus.Update(gpu);
+            return Ok(gpu);
+        }
     }
 }
